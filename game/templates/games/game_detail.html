@@ -1,0 +1,16 @@
+<!-- game_detail.html -->
+{% extends "home.html" %}
+
+{% block title %}{{game.title}}{% endblock title %}
+
+{% block content %}
+    <h2>Game Details</h2>
+        <ul>
+            <li><strong>Title:</strong> {{ game.title }}</li>
+            <li><strong>Genre:</strong> {{ game.genre }}</li>
+            <li><strong>Release Date:</strong> {{ game.release_date }}</li>
+            <li><strong>Price:</strong> ${{ game.price }}</li>
+        </ul>
+        <a href="{% url 'game_list' %}">Back to Game List</a>
+{% endblock content %}
+    

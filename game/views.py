@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from .models import Game
 from .forms import GameForm
 
+
+def index(request):
+    return render(request, 'games/home.html')
+
 def game_list(request):
     games = Game.objects.all()
     return render(request, 'games/game_list.html', {'games': games})

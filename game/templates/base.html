@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
+    
+    <title>{% block title %}{% endblock title %} | GameHUB</title>
+</head>
+
+<body>
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="bg-zinc-900 text-white w-60 flex-shrink-0">
+          <!-- Sidebar content goes here -->
+          <div class="p-4">
+             <!-- Logo -->
+             <div class="text-white">
+                <span class="font-bold text-lg">GameHUB</span>
+              </div>
+            <!-- Add your sidebar links here -->
+            <ul class="mt-4">
+              <li><a href="{% url 'game_list' %}" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="person-outline"></ion-icon> Profile</a></li>
+              <li><a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="card-outline"></ion-icon> Shop</a></li>
+              <li><a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="heart-outline"></ion-icon> Favourite</a></li>
+              <li><a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="wallet-outline"></ion-icon> Balance</a></li>
+              <!-- Add more links as needed -->
+            </ul>
+
+            <div class="relative mt-4">
+                <button class="flex items-center w-full py-2 px-4 text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700">
+                  <span>CATEGORY</span>
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </button>
+                <!-- Dropdown content -->
+                <div class="absolute left-0 mt-1 w-full bg-gray-700 rounded-md shadow-lg z-10 ">
+                  <a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="game-controller-outline"></ion-icon>  Option 1</a>
+                  <a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="game-controller-outline"></ion-icon>  Option 2</a>
+                  <a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="game-controller-outline"></ion-icon>  Option 3</a>
+                  <!-- Add more dropdown options as needed -->
+                </div>
+              </div>
+          </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 bg-gray-200">
+            <div class="bg-gray-200 p-4">
+                <!-- Navbar -->
+                <nav class="flex items-center justify-between">
+
+                  <!-- Search bar -->
+                  <div class="flex-2">
+                    <input type="text" placeholder="Search..." class="w-80 bg-zinc-700 text-white rounded-md py-2 px-4 focus:outline-none focus:bg-zinc-900">
+                  </div>
+              
+                  <!-- Navigation links -->
+                  <div class="flex items-center space-x-1.5">
+                    <a href="#" class="block py-2 px-2 text-gray-950 hover:text-white"><ion-icon name="notifications-outline" class="size-6"></ion-icon></a>
+                    <a href="#" class="block py-2 px-2 text-gray-950 hover:text-white"><ion-icon name="bag-handle-outline" class="size-6"></ion-icon></a>
+                  </div>
+                </nav>
+            </div>
+        
+          <!-- Main content goes here -->
+          <div class="p-8">
+            {% block content %}
+            
+            {% endblock content %}
+          </div>
+        </div>
+      </div>
+      
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
