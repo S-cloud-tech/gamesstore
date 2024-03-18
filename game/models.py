@@ -9,12 +9,12 @@ from django.db import models
     
 
 class Game(models.Model):
-    title = models.CharField(max_length=100, null=True)
-    description = models.CharField(max_length=200, null=True)
-    genre = models.CharField(max_length=50, null=True)
+    title = models.CharField(max_length=100, blank=False, null=True)
+    description = models.CharField(max_length=200, blank=False, null=True)
+    genre = models.CharField(max_length=50, blank=False, null=True)
     game_pic = models.ImageField(blank=True, null=True)
-    release_date = models.DateField(null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
+    release_date = models.DateField( blank=False,null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, blank=False, null=True)
 #    tags = models.ManyToManyField(Tag)
 
     def __str__(self):

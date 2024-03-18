@@ -7,7 +7,7 @@
   <div class="flex justify-between">
     <h1 class="text-2xl font-bold mb-4">Game Library</h1>
     <div class="gap-content-center text-center">
-        <a href="{% url 'game_create' %}" class="text-black text-lg font-semibold py-2 px-4">
+        <a href="{% url 'add_game' %}" class="text-black text-lg font-semibold py-2 px-4">
             <ion-icon name="add-outline"></ion-icon>Add game
         </a>
     </div>
@@ -36,8 +36,8 @@
           <td class="border px-4 py-2">{{ game.release_date }}</td>
           <td class="border px-4 py-2">{{ game.price }}</td>
           <td class="border px-4 py-2">
-            <a href="{% url 'game_update' game.pk %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-4 mr-4 rounded">Edit</a>
-            <a href="{% url 'game_delete' game.pk %}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 self-end rounded">Delete</a>
+            <a href="{% url 'edit_game' game.id %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-4 mr-4 rounded">Edit</a>
+            <a href="{% url 'delete_game' game.id %}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 self-end rounded">Delete</a>
           </td>
         </tr>
         {% endfor %}

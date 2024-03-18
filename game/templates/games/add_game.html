@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="p-8">
+  <h1 class="text-2xl font-bold mb-4">Add Game</h1>
+  <div class="flex flex-col space-y-4 ">
+    <!-- Game Form -->
+    <form class="w-full max-w-md " method='POST' action="{% url 'add_game' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="flex items-center justify-between">
+        <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"  placeholder="Submit">
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

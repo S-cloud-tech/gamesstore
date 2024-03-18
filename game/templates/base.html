@@ -21,18 +21,17 @@
           <div class="p-4">
              <!-- Logo -->
              <div class="text-white">
-                <a href={% url 'home' %}><span class="font-bold text-lg">GameHUB</span></a>
+                <a href={% url 'game_list' %}><span class="font-bold text-lg">GameHUB</span></a>
               </div>
             <!-- Add your sidebar links here -->
             <ul class="mt-4">
-              <li><a href="{% url 'game_list' %}" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="person-outline"></ion-icon> Profile</a></li>
-              <li><a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="card-outline"></ion-icon> Shop</a></li>
+              <li><a href="{% url 'game_list' %}" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+              <li><a href="{% url 'home' %}" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="storefront-outline"></ion-icon> Shop</a></li>
               <li><a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="heart-outline"></ion-icon> Favourite</a></li>
-              <li><a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="wallet-outline"></ion-icon> Balance</a></li>
               <!-- Add more links as needed -->
             </ul>
 
-            <div class="relative mt-4">
+            {% comment %} <div class="relative mt-4">
                 <button class="flex items-center w-full py-2 px-4 text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700">
                   <span>CATEGORY</span>
                   <ion-icon name="chevron-down-outline"></ion-icon>
@@ -44,7 +43,7 @@
                   <a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="game-controller-outline"></ion-icon>  Option 3</a>
                   <!-- Add more dropdown options as needed -->
                 </div>
-              </div>
+              </div> {% endcomment %}
           </div>
         </div>
         
@@ -56,7 +55,10 @@
 
                   <!-- Search bar -->
                   <div class="flex-2">
-                    <input type="text" placeholder="Search..." class="w-80 bg-zinc-700 text-white rounded-md py-2 px-4 focus:outline-none focus:bg-zinc-900">
+                    <form method='GET'>
+                      <input type="text" placeholder="Search..." name="f" class="w-80 bg-zinc-700 text-white rounded-md py-2 px-4 focus:outline-none focus:bg-zinc-900">
+                      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Search</button>
+                    </form>
                   </div>
               
                   <!-- Navigation links -->

@@ -3,11 +3,11 @@
 
 {% block content %}
 <div class="p-8">
-  {% csrf_token %}
     <!-- Main Content with Form -->
     <h1 class="text-2xl font-bold mb-4">Add Game</h1>
     <!-- Game Form -->
-    <form id="gameForm" class="w-full max-w-md">
+    <form id="gameForm" class="w-full max-w-md" action="{% url 'edit_game' %}">
+      {% csrf_token %}
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
           Title
@@ -40,7 +40,7 @@
       </div>
     </form>
   </div>
-  
+  {% comment %} JS Script for creating/updating  {% endcomment %}
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const form = document.getElementById("gameForm");
@@ -78,7 +78,7 @@
         });
     </script>
 
-    
+    {% comment %} JS Script for deleting  {% endcomment %}
     <script>
       document.addEventListener("DOMContentLoaded", function() {
           const deleteButtons = document.querySelectorAll(".deleteBtn");
