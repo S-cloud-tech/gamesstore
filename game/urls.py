@@ -2,10 +2,22 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='home'),
-    path('game/', views.game_list, name='game_list'),
+    #Authentication
+    path('login/', views.user_login, name='login'),
+    path('signup/', views.user_signup, name='signup'),
+<<<<<<< HEAD
+    path('logout/', views.user_logout, name='logout'),
+
+
+    path('home/', views.game_index, name='home'),
+=======
+
+
+    path('game/', views.game_index, name='home'),
+>>>>>>> 35719fdd13481954c13b5cbf9d564d27e27b852f
+    path('', views.game_list, name='game_list'),
     path('<int:pk>/', views.game_detail, name='game_detail'),
-    path('new/', views.game_create, name='game_create'),
-    path('<int:pk>/edit/', views.game_update, name='game_update'),
-    path('<int:pk>/delete/', views.game_delete, name='game_delete'),
+    path('add/', views.add_game, name='add_game'),
+    path('<str:pk>/edit/', views.edit_game, name='edit_game'),
+    path('<str:pk>/delete/', views.delete_game, name='delete_game'),
 ]
