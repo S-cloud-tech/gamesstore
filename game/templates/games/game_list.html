@@ -14,13 +14,14 @@
         <!-- Iterate over your items and display each one -->
         {% for game in games %}
         <div class="bg-white p-4 shadow-md my-8 rounded-md">
-          <h2 class="text-xl font-bold mb-2">{{ game.title }}</h2>
-          <h3 class="text-xl font-bold mb-2">{{ game.genre }}</h3>
-          <h3 class="text-xl font-bold mb-2">{{ game.release_date }}</h3>
-          <h3 class="text-xl font-bold mb-2">{{ game.price }}</h3>
-          <p>{{ game.description }}</p>
+          <img class="size-44" src="{{ game_pic.url }}" alt="{{ game.title }}">
+          <h2 class="text-lg font-normal mb-1">{{ game.title }}</h2>
+          <h3 class="text-lg font-normal mb-1">{{ game.genre }}</h3>
+          <h3 class="text-lg font-normal mb-1">{{ game.release_date }}</h3>
+          <h3 class="text-lg font-normal mb-1">{{ game.price }}</h3>
+          <p class="mb-2">{{ game.description }}</p>
           <!-- Add other item details as needed -->
-          <a href="{% url 'game_detail' game.id %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 my-8 rounded">View</a>
+          <a href="{% url 'game_detail' game.id %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-px my-8 rounded">View</a>
         </div>
         {% endfor %}
       </div>
