@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from .models import Game
-from .forms import GameForm, SignUpForm, LoginForm
+from .forms import GameForm, SignUpForm
 from .filter import GameFilter
 
 
@@ -15,26 +15,26 @@ def user_signup(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data('username')
-            messages.success(request, 'Account has been created' + username)
+            messages.success(request, 'Account has been created' )
             return redirect('login')
     
-    return render(request, 'games/signup.html', {'form': form})
+    return render(request, 'auth/signup.html', {'form': form})
 
 # login page
 def user_login(request):
-    form = LoginForm()
     if request.method == 'POST':
-        form = LoginForm(request.POST)
+        form = AuthenticationForm(request, request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
-            if user:
-                login(request, user)    
+            if user is not None:
+                login(request, user)
+                # Redirect to a success page, e.g., home page
                 return redirect('/')
-    
-    return render(request, 'games/login.html', {'form': form})
+    else:
+        form = AuthenticationForm()
+    return render(request, 'auth/login.html', {'form': form})
 
 # logout page
 def user_logout(request):
