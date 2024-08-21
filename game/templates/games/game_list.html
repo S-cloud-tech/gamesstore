@@ -9,11 +9,8 @@
         <!-- Iterate over your items and display each one -->
         {% for game in games %}
         <div class="bg-white p-4 shadow-md my-8 rounded-md">
-<<<<<<< HEAD
           <img class="size-42" src="{{ game.game_pic.url }}">
-=======
           <img class="size-44" src="{{ game_pic.url }}" alt="{{ game.title }}">
->>>>>>> 35719fdd13481954c13b5cbf9d564d27e27b852f
           <h2 class="text-lg font-normal mb-1">{{ game.title }}</h2>
           <h3 class="text-lg font-normal mb-1">{{ game.genre }}</h3>
           <h3 class="text-lg font-normal mb-1">{{ game.release_date }}</h3>

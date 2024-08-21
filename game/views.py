@@ -1,23 +1,19 @@
 from django.shortcuts import render, redirect
-<<<<<<< HEAD
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from .models import Game
 from .forms import GameForm, SignUpForm
-=======
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from .models import Game
 from .forms import GameForm, SignUpForm, LoginForm
->>>>>>> 35719fdd13481954c13b5cbf9d564d27e27b852f
 from .filter import GameFilter
 
 
 # signup page
 def user_signup(request):
-<<<<<<< HEAD
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         print(form)
@@ -29,46 +25,21 @@ def user_signup(request):
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
 
-# login page
-def user_login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, request.POST)
-=======
-    form = SignUpForm()
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data('username')
-            messages.success(request, 'Account has been created' + username)
-            return redirect('login')
-    
-    return render(request, 'games/signup.html', {'form': form})
 
 # login page
 def user_login(request):
     form = LoginForm()
     if request.method == 'POST':
         form = LoginForm(request.POST)
->>>>>>> 35719fdd13481954c13b5cbf9d564d27e27b852f
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
-<<<<<<< HEAD
-            if user is not None:
-                login(request, user)    
-                return redirect('game_list')
-    else:
-        form = AuthenticationForm()
-    return render(request, 'registration/login.html', {'form': form})
-=======
             if user:
                 login(request, user)    
                 return redirect('/')
     
     return render(request, 'games/login.html', {'form': form})
->>>>>>> 35719fdd13481954c13b5cbf9d564d27e27b852f
 
 # logout page
 def user_logout(request):

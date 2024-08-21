@@ -51,11 +51,7 @@ ROOT_URLCONF = 'gamestop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-<<<<<<< HEAD
-        'DIRS': [BASE_DIR/ "templates"],
-=======
         'DIRS': [BASE_DIR/ ""],
->>>>>>> 35719fdd13481954c13b5cbf9d564d27e27b852f
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,9 +127,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-<<<<<<< HEAD
-LOGIN_REDIRECT_URL = '/'
-=======
->>>>>>> 35719fdd13481954c13b5cbf9d564d27e27b852f
 
 # AUTH_USER_MODEL = 'game.User'

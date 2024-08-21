@@ -10,9 +10,6 @@ class Game(models.Model):
 
     def __str__(self):
         return self.title
-<<<<<<< HEAD
-    
-=======
     
 # class User(models.Model):
 #     name = models.CharField(max_length=32, null=True)
@@ -20,4 +17,3 @@ class Game(models.Model):
 
 #     def __str__(self):
 #         return self.name
->>>>>>> 35719fdd13481954c13b5cbf9d564d27e27b852f
