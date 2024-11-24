@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required, permission_required
 from .models import Game
 from .forms import GameForm, SignUpForm
 from django.contrib.auth.forms import UserCreationForm
@@ -12,7 +13,7 @@ from .forms import GameForm, SignUpForm, LoginForm
 from .filter import GameFilter
 
 
-# signup page
+# signup page5
 def user_signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -38,8 +39,10 @@ def user_login(request):
             if user:
                 login(request, user)    
                 return redirect('/')
+        else:
+            form = LoginForm()
     
-    return render(request, 'games/login.html', {'form': form})
+    return render(request, 'registration/login.html', {'form': form})
 
 # logout page
 def user_logout(request):
@@ -61,11 +64,13 @@ def game_list(request):
     context = {'games': games}
     return render(request, 'games/game_list.html', context)
 
+@login_required
 def game_detail(request, pk):
     games = Game.objects.get(pk=pk)
     context = {'games': games}
     return render(request, 'games/game_detail.html', context)
 
+@permission_required
 def add_game(request):
     form = GameForm()
     if request.method == 'POST':
@@ -78,6 +83,7 @@ def add_game(request):
     context = {'form': form}
     return render(request, 'games/add_game.html', context)
 
+@permission_required
 def edit_game(request, pk):
     game = Game.objects.get(id=pk)
     form = GameForm(instance=game)
@@ -91,6 +97,7 @@ def edit_game(request, pk):
     context = {'form': form}
     return render(request, 'games/add_game.html', context)
 
+@permission_required
 def delete_game(request, pk):
     game = Game.objects.get(id=pk)
     if request.method == 'POST':

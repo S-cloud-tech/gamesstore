@@ -1,1 +1,111 @@
-<h1>Home </h1>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
+    
+    <title>{% block title %}{% endblock title %} | GameHUB</title>
+</head>
+
+<body>
+  {% if user.is_authenticated %}
+    <div class="flex h-screen">
+          <!-- Sidebar -->
+          <div class="bg-zinc-900 text-white w-60 flex-shrink-0">
+            <!-- Sidebar content goes here -->
+            <div class="p-4">
+              <!-- Logo -->
+              <div class="text-white">
+                  <a href={% url 'game_list' %}><span class="font-bold text-lg">GameHUB</span></a>
+                </div>
+              <!-- Add your sidebar links here -->
+              <ul class="mt-4">
+                <li><a href="{% url 'game_list' %}" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="home-outline"></ion-icon> Home </a></li>
+                <li><a href="{% url 'home' %}" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="game-controller-outline"></ion-icon> Game </a></li>
+                <li><a href="{% url "logout" %}" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="heart-outline"></ion-icon> Logout </a></li>
+                <!-- Add more links as needed -->
+              </ul>
+
+              {% comment %} <div class="relative mt-4">
+                  <button class="flex items-center w-full py-2 px-4 text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700">
+                    <span>CATEGORY</span>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                  </button>
+                  <!-- Dropdown content -->
+                  <div class="absolute left-0 mt-1 w-full bg-gray-700 rounded-md shadow-lg z-10 ">
+                    <a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="game-controller-outline"></ion-icon>  Option 1</a>
+                    <a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="game-controller-outline"></ion-icon>  Option 2</a>
+                    <a href="#" class="block py-2 px-4 text-gray-400 hover:text-white"><ion-icon name="game-controller-outline"></ion-icon>  Option 3</a>
+                    <!-- Add more dropdown options as needed -->
+                  </div>
+                </div> {% endcomment %}
+            </div>
+          </div>
+          
+          <!-- Main Content -->
+          <div class="flex-1 bg-gray-200">
+              <div class="bg-gray-200 p-4 mx-4">
+                  <!-- Navbar -->
+                  <nav class="flex items-center justify-between">
+
+                    <!-- Search bar -->
+                    <div class="flex-2">
+                      <form method='GET'>
+                        <input type="text" placeholder="Search..." name="f" class="w-80 bg-zinc-700 text-white rounded-md py-2 px-4 focus:outline-none focus:bg-zinc-900">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Search</button>
+                      </form>
+                    </div>
+                
+                    <!-- Navigation links -->
+                    {% comment %} <div class="flex items-center space-x-1.5">
+                      <a href="#" class="block py-2 px-2 text-gray-950 hover:text-white"><ion-icon name="notifications-outline" class="size-6"></ion-icon></a>
+                      <a href="#" class="block py-2 px-2 text-gray-950 hover:text-white"><ion-icon name="bag-handle-outline" class="size-6"></ion-icon></a>
+                    </div> {% endcomment %}
+                  </nav>
+              </div>
+          
+            <!-- Main content goes here -->
+            <div class="p-8">
+              {% block content %}
+              
+              {% endblock content %}
+            </div>
+          </div>
+        </div>
+    {% else %}
+    <div class="bg-gray-100 h-screen flex justify-center items-center">
+      <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+          <h1 class="text-2xl font-semibold mb-4">Login</h1>
+          <form method="POST" action={% url 'login' %}>
+              {% csrf_token %}
+              {% comment %} {{ form.as_p }} {% endcomment %}
+              <div class="mb-4">
+                  <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                  <input type="text" id="username" name="username" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+              </div>
+
+              <div class="mb-4">
+                  <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                  <input type="password" id="password" name="password" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+              </div>
+
+              <div class="mt-6">
+                  <button type="submit" class="px-4 py-2 mr-20 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none">Login</button>
+                  Dont have an Account?<a href="{% url 'signup' %}" class="ml-1 text-blue-700">Create</a>
+              </div>
+          </form>
+      </div>
+    </div>
+    
+    {% endif %}
+      
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
